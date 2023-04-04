@@ -1,2 +1,2 @@
-# pizzacode
+# Pizzacode
 versiones de proyecto "pizzeria"
