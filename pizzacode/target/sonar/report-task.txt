@@ -1,0 +1,6 @@
+projectKey=pizzacode
+serverUrl=http://localhost:9000
+serverVersion=8.9.10.61524
+dashboardUrl=http://localhost:9000/dashboard?id=pizzacode
+ceTaskId=AYfN52xsSuFV5Tnl6uqM
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYfN52xsSuFV5Tnl6uqM
