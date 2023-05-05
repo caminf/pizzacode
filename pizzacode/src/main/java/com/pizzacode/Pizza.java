@@ -5,26 +5,37 @@ public class Pizza {
     String usuario;
     double costo;
     boolean personalizada;
+    Masa masa;
+    Ingrediente ingrediente;
 
+    public Pizza(String nombrePizza, String usuario, double costo) {
 
-    public Pizza(String nombrePizza, String usuario, double costo){
-
-        this.nombrePizza= nombrePizza;
+        this.nombrePizza = nombrePizza;
         this.usuario = usuario;
-        this.costo=costo;
-        this.personalizada= false;
+        this.costo = costo;
+        this.personalizada = false;
 
     }
 
-    public void crearPizza(){
-        Pizza.add();
+    public Pizza crearPizza() {
 
-
+        return new Pizza(nombrePizza(), nombreUsuario(), calcularCosto());
     }
 
-    public void guardarPizza(){
+    public String nombrePizza() {
 
+        return "nombre";
+    }
+
+    public String nombreUsuario() {
+        return "nombre";
+    }
+
+    public double calcularCosto() {
+        return 0.0;
+    }
+
+    public void guardarPizza() {
 
     }
 }
-
