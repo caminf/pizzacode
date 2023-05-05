@@ -11,4 +11,13 @@ public class Ingrediente {
         this.precio = precio;
     }
 
+    public Ingrediente(String nombre) {
+
+        this.nombre = nombre;
+    }
+
+    public Ingrediente(double precio) {
+        this.precio= precio;
+    }
+
 }
