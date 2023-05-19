@@ -9,6 +9,7 @@ public class Carrito {
 
 
     public void pagar() {
+        
     }
 
     public Boleta generarBoleta() {
@@ -16,7 +17,7 @@ public class Carrito {
 
 
 
-       return new Boleta();
+       return boleta.get(0);
     }
 
     public void mostrarPedido() {

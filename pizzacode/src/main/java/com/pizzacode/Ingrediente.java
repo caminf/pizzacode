@@ -2,8 +2,8 @@ package com.pizzacode;
 
 public class Ingrediente {
 
-    String nombre = "ingrediente nuevo";
-    double precio = 0.0;
+    private String nombre ;
+    private double precio;
 
     public Ingrediente(String nombre, double precio) {
 
@@ -17,7 +17,10 @@ public class Ingrediente {
     }
 
     public Ingrediente(double precio) {
-        this.precio= precio;
+        this.precio = precio;
     }
+
+
+
 
 }
