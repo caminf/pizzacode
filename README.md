@@ -9,7 +9,7 @@ al iniciar el programa un menu nos mostrara 4 opciones para elegir
 
 1.- ordenar
 
-2.- carrito
+2.- pagar
 
 3.- ver usuarios
 
