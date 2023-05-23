@@ -8,8 +8,11 @@ Documentación -> https://cinfante01.atlassian.net/l/cp/fdpXrhY7
 al iniciar el programa un menu nos mostrara 4 opciones para elegir 
 
 1.- ordenar
+
 2.- carrito
+
 3.- ver usuarios
+
 4.- registrar usuario
 
 
