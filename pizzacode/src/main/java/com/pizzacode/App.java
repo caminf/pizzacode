@@ -9,14 +9,11 @@ public class App {
 
     public static void main(String[] args) {
         // pruebas con una orden
-        ArrayList<Orden> ordenes = new ArrayList<>();
-        ArrayList<Usuario> usuarios = new ArrayList<>();
-
         Carrito carrito1 = new Carrito();
 
         do {
-            carrito1.menu(usuarios);
-        } while (carrito1.pagar(usuarios));
+            carrito1.menu();
+        } while (carrito1.pagar());
     }
 
 }

@@ -7,11 +7,13 @@ import java.util.Scanner;
 
 public class Carrito {
     private Scanner in = new Scanner(System.in);
-
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Boleta> boletas = new ArrayList<>();
     // array de ordenes
 
-    public boolean pagar(ArrayList<Usuario> usuarios) {
+    public boolean pagar() {
         // cambiar estado segun estado del pago
+
         return true;
     }
 
@@ -19,7 +21,8 @@ public class Carrito {
 
     }
 
-    public void menu(ArrayList<Usuario> usuarios) {
+    public void menu() {
+        System.out.println("---------------");
 
         System.out.println("BIENVENIDO A LA PIZZERIA");
 
@@ -29,6 +32,8 @@ public class Carrito {
         System.out.println("2.- PAGAR");
         System.out.println("3.- VER USUARIOS");
         System.out.println("4.- REGISTRAR USUARIOS");
+        System.out.println("---------------");
+
         // validar entrada
         int seleccion = in.nextInt();
 
@@ -36,13 +41,16 @@ public class Carrito {
             case 1:
                 // validar que no entre si no existe usuario
                 // DO WHILE SEGUN CUANTAS PIZZAS DESEE.
-                generarOrden(usuarios);
+                generarOrden();
                 break;
             case 2:
-                pagar(usuarios);
+                mostrarBoleta();
+
+                pagar();
+
                 break;
             case 3:
-                mostrarUsuarios(usuarios);
+                mostrarUsuarios();
                 break;
             case 4:
 
@@ -54,18 +62,39 @@ public class Carrito {
 
                 break;
             default:
-
                 break;
         }
     }
 
-    public void generarOrden(ArrayList<Usuario> usuarios) {
+    public void generarOrden() {
+        System.out.println("---------------");
+        System.out.println("seleccione usuario: ");
+        System.out.println("---------------");
+
+        mostrarUsuarios();
+
+        int index = in.nextInt();
+
+        boletas.add(new Boleta(usuarios.get(index - 1), 10));
 
     }
 
-    public void mostrarUsuarios(ArrayList<Usuario> usuarios) {
+    public void mostrarBoleta() {
+        int i = 1;
+
+        for (Boleta boleta : boletas) {
+            System.out.println("BOLETA NUMERO " + i + ":" + boleta.getUsuario().getNombre());
+            i++;
+        }
+
+    }
+
+    public void mostrarUsuarios() {
+        int i = 1;
         for (Usuario usuario : usuarios) {
-            System.out.println(usuario.getNombre());
+            System.out.println("---------------");
+            System.out.println(i + ".-" + usuario.getNombre());
+            i++;
         }
     }
 
