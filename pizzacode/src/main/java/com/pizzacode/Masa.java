@@ -1,5 +1,7 @@
 package com.pizzacode;
 
+// es un ingrediente, tiene otros componentes que lo diferencian de los ingredientes tradicionales
+
 public class Masa extends Ingrediente {
     
     private TipoMasa tipo;
@@ -7,6 +9,7 @@ public class Masa extends Ingrediente {
 
     public Masa(String nombre, double precio) {
         super(nombre, precio);
+
     }
     
     

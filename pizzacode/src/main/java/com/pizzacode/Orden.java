@@ -3,6 +3,8 @@ package com.pizzacode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// aca se generan las boletas, estas estan asociadas a un usuario y una pizza 
+
 public class Orden {
 
     private Scanner in = new Scanner(System.in);
@@ -10,12 +12,13 @@ public class Orden {
     private ArrayList<Pizza> pizzas = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Boleta> boletas = new ArrayList<>();
+    /*-------------*/
+    private int num_orden;
     private String nombreComprador;
     // private boolean cupon;
 
     public void comprarPizza(Usuario user) {
 
-        
         // tipo pizzas
         System.out.println("PIZZAS DISPONIBLES: ");
         System.out.println("1.- PIZZA CAMPESTRE");
@@ -72,14 +75,12 @@ public class Orden {
 
     public void validarCupon() {
 
-       for (int i = 0; i < pizzas.size(); i++) {
-        System.out.println(pizzas.get(i).getNombrePizza());
-        System.out.println(usuarios.get(i).getNombre());
-        System.out.println(boletas.get(i).getUsuario().getNombre());
-        
-        System.out.println(boletas.get(i).getTotal());
-    }
+        for (int i = 0; i < pizzas.size(); i++) {
+
+        }
 
     }
+
+   
 
 }

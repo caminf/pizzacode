@@ -1,5 +1,7 @@
 package com.pizzacode;
 
+// son los componentes de la pizza
+
 public class Ingrediente {
 
     private String nombre ;
@@ -20,6 +22,7 @@ public class Ingrediente {
         this.precio = precio;
     }
 
+    
 
 
 

@@ -3,20 +3,18 @@ package com.pizzacode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// aca se encuentra la pizza, aca estan los metodos para crear las pizzas y para agregar o quitar ingredientes. 
+
 public class Pizza {
 
     private Scanner in = new Scanner(System.in);
 
-    //
     private String nombrePizza;
     private Usuario usuario;
     private double costo;
     private boolean personalizada;
     private Masa masa;
-
     // ingredientes arraylist
-    // duda, que pasa si no inicializo el arraylist
-
     private ArrayList<Ingrediente> ingredientes;
 
     public Pizza(int seleccion, Usuario usuario) {
@@ -40,7 +38,7 @@ public class Pizza {
                 this.usuario = usuario;
                 break;
             case 4:
-
+                pizzaPersonalizada(usuario);
                 break;
             default:
                 break;
@@ -57,14 +55,9 @@ public class Pizza {
 
     }
 
-    public Pizza crearPizza() {
-
-        return new Pizza(nombrePizza(), nombreUsuario(), calcularCosto());
-    }
-
     public Pizza pizzaPersonalizada(Usuario usuario) {
-
-        Pizza p_personalizada = new Pizza("nombrePizza", usuario, costo);
+        //this.cosas aca.
+        Pizza p_personalizada = new Pizza("nombrePizza", usuario, 134);
 
         agregarIngrediente(p_personalizada);
 
@@ -102,24 +95,24 @@ public class Pizza {
 
     }
 
+    public void quitarIngrediente() {
+    }
+
     public String getNombrePizza() {
-
-        return this.nombrePizza;
+        return nombrePizza;
     }
 
-    public String nombreUsuario() {
-        return "nombre";
-    }
-
-    public double calcularCosto() {
-        return 0.0;
-    }
-
-    public void guardarPizza() {
-
+    public void setNombrePizza(String nombrePizza) {
+        this.nombrePizza = nombrePizza;
     }
 
     public double getCosto() {
-        return this.costo;
+        return costo;
     }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
+    }
+
+    
 }

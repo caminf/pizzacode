@@ -1,27 +1,22 @@
 package com.pizzacode;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
+
+    public static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
+        // pruebas con una orden
+        ArrayList<Orden> ordenes = new ArrayList<>();
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            usuarios.add(new Usuario());
-        }
 
-        // Usuario usuario = new Usuario();
-
-        // array orden?, faltan carritos!
-        Orden orden = new Orden();
+        Carrito carrito1 = new Carrito();
 
         do {
-            for (int i = 0; i < 3; i++) {
-
-                orden.comprarPizza(usuarios.get(i));
-                orden.validarCupon();
-            }
-
-        } while (true);
-
+            carrito1.menu(usuarios);
+        } while (carrito1.pagar(usuarios));
     }
+
 }
