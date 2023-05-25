@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Carrito {
     private Scanner in = new Scanner(System.in);
     private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Orden> ordenes = new ArrayList<>();
     private ArrayList<Boleta> boletas = new ArrayList<>();
     // array de ordenes
 
@@ -24,10 +25,7 @@ public class Carrito {
     public void menu() {
         System.out.println("---------------");
 
-        System.out.println("BIENVENIDO A LA PIZZERIA");
-
         System.out.println("SELECCIONA UNA OPCION");
-
         System.out.println("1.- ORDENAR");
         System.out.println("2.- PAGAR");
         System.out.println("3.- VER USUARIOS");
@@ -67,35 +65,62 @@ public class Carrito {
     }
 
     public void generarOrden() {
-        System.out.println("---------------");
-        System.out.println("seleccione usuario: ");
-        System.out.println("---------------");
+        if (!usuarios.isEmpty()) {
 
-        mostrarUsuarios();
+            System.out.println("---------------");
+            System.out.println("SELECCIONE SU USUARIO: ");
+            mostrarUsuarios();
+            System.out.println("---------------");
 
-        int index = in.nextInt();
+            int index = in.nextInt();
 
-        boletas.add(new Boleta(usuarios.get(index - 1), 10));
+            ordenes.add(new Orden(usuarios.get(index - 1)));
 
+            ordenar();
+
+            // boletas.add(new Boleta(usuarios.get(index - 1), 10));
+
+        } else {
+            System.out.println("---------------");
+
+            System.out.println("NO HAY USUARIOS DISPONIBLES");
+        }
+
+    }
+
+    public void ordenar() {
+        ordenes.get(ordenes.size() - 1).seleccionPizza();
     }
 
     public void mostrarBoleta() {
         int i = 1;
+        if (!ordenes.isEmpty()) {
 
-        for (Boleta boleta : boletas) {
-            System.out.println("BOLETA NUMERO " + i + ":" + boleta.getUsuario().getNombre());
-            i++;
+            for (Orden orden : ordenes) {
+                System.out.println("BOLETA a nombre de :" + orden.getBoletas().get(i - 1).getUsuario().getNombre());
+            }
+
+        } else {
+            System.out.println("---------------");
+            System.out.println("NO HAY BOLETAS DISPONIBLES");
         }
 
     }
 
     public void mostrarUsuarios() {
         int i = 1;
-        for (Usuario usuario : usuarios) {
+        if (!usuarios.isEmpty()) {
+
+            for (Usuario usuario : usuarios) {
+                System.out.println("---------------");
+                System.out.println(i + ".-" + usuario.getNombre());
+                i++;
+            }
+        } else {
             System.out.println("---------------");
-            System.out.println(i + ".-" + usuario.getNombre());
-            i++;
+            System.out.println("NO HAY USUARIOS DISPONIBLES");
         }
+
     }
 
 }

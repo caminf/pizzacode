@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) {
         // pruebas con una orden
         Carrito carrito1 = new Carrito();
-
+        System.out.println("BIENVENIDO A LA PIZZERIA");
         do {
             carrito1.menu();
         } while (carrito1.pagar());
