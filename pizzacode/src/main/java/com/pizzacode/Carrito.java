@@ -17,6 +17,7 @@ public class Carrito {
         return true;
     }
 
+    
     public void mostrarPedido() {
 
     }
@@ -32,7 +33,9 @@ public class Carrito {
         System.out.println("2.- PAGAR");
         System.out.println("3.- VER USUARIOS");
         System.out.println("4.- REGISTRAR USUARIOS");
+        System.out.println("5.- SALIR");
         System.out.println("---------------");
+
 
         // validar entrada
         int seleccion = in.nextInt();
@@ -59,7 +62,6 @@ public class Carrito {
                 break;
 
             case 5:
-
                 break;
             default:
                 break;
