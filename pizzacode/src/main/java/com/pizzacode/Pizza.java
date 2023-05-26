@@ -10,58 +10,52 @@ public class Pizza {
     private Scanner in = new Scanner(System.in);
 
     private String nombrePizza;
-    private Usuario usuario;
     private double costo;
-    private boolean personalizada;
-    private Masa masa;
     // ingredientes arraylist
     private ArrayList<Ingrediente> ingredientes;
 
-    public Pizza(int seleccion, Usuario usuario) {
-        // pizzas default
-        switch (seleccion) {
-            case 1:
-                this.nombrePizza = "Pizza Campestre";
-                this.costo = 10;
-                this.usuario = usuario;
-                break;
-            case 2:
-
-                this.nombrePizza = "Pizza Napolitana";
-                this.costo = 20;
-                this.usuario = usuario;
-                break;
-            case 3:
-
-                this.nombrePizza = "Pizza Pepperoni";
-                this.costo = 30;
-                this.usuario = usuario;
-                break;
-            case 4:
-                pizzaPersonalizada(usuario);
-                break;
-            default:
-                break;
-        }
-
-    }
-
-    public Pizza(String nombrePizza, Usuario usuario, double costo) {
+    public Pizza(String nombrePizza, double costo) {
 
         this.nombrePizza = nombrePizza;
-        this.usuario = usuario;
+
         this.costo = costo;
-        this.personalizada = false;
 
     }
 
-    public Pizza pizzaPersonalizada(Usuario usuario) {
-        //this.cosas aca.
-        Pizza p_personalizada = new Pizza("nombrePizza", usuario, 134);
+    public Pizza(int seleccion) {
+        switch (seleccion) {
+            case 1:
+                // Pizza Campestre
+                this.nombrePizza = "Pizza campestre";
+                this.costo = 10;
+                break;
 
-        agregarIngrediente(p_personalizada);
+            case 2:
+                // Pizza Napolitana
+                this.nombrePizza = "Pizza napolitana";
+                this.costo = 20;
 
-        return p_personalizada;
+                break;
+            case 3:
+                // Pizza Pepperoni
+                this.nombrePizza = "Pizza pepperoni";
+                this.costo = 30;
+
+                break;
+            case 4:
+                // Pizza Personalizada
+
+                this.nombrePizza = "Pizza personalizada";
+                this.costo = 40;
+
+                break;
+            case 5:
+
+                break;
+
+            default:
+
+        }
     }
 
     public void agregarIngrediente(Pizza pizza) {
@@ -95,9 +89,6 @@ public class Pizza {
 
     }
 
-    public void quitarIngrediente() {
-    }
-
     public String getNombrePizza() {
         return nombrePizza;
     }
@@ -114,5 +105,4 @@ public class Pizza {
         this.costo = costo;
     }
 
-    
 }

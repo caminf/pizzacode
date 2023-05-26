@@ -5,29 +5,14 @@ import java.util.ArrayList;
 //contiene la informacion del usuario, el detalle de la pizza y el monto total.
 
 public class Boleta {
-    private int num_boleta;
     private Usuario usuario;
     private double total;
     private double descuento;
-    private Pizza pizzas;
+    private ArrayList<Pizza> pizzas = new ArrayList<>();
     // la boleta debe tener pizzas
-
-    public Boleta(Usuario usuario, double total, double descuento) {
-        this.usuario = usuario;
-        this.total = total;
-        this.descuento = descuento;
-
-    }
-
-    public Boleta(Usuario usuario, double total) {
-        this.usuario = usuario;
-        this.total = total;
-
-    }
 
     public Boleta(Usuario usuario) {
         this.usuario = usuario;
-
     }
 
     public double getTotal() {
@@ -46,6 +31,14 @@ public class Boleta {
         this.descuento = descuento;
     }
 
+    public ArrayList<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(ArrayList<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -53,5 +46,6 @@ public class Boleta {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
 
 }

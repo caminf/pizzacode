@@ -3,28 +3,35 @@ package com.pizzacode;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//aca se pagara.
+//aca se encuentra el menu principal.
 
 public class Carrito {
     private Scanner in = new Scanner(System.in);
-    private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Orden> ordenes = new ArrayList<>();
-    private ArrayList<Boleta> boletas = new ArrayList<>();
-    // array de ordenes
 
     public boolean pagar() {
-        // cambiar estado segun estado del pago
-
+        if (ordenes.isEmpty()) {
+            System.out.println("---------------");
+            System.out.println("NO HAY BOLETAS DISPONIBLES");
+        } else {
+            mostrarUsuarios();
+            System.out.println("---------------");
+            System.out.println("seleccione usuario");
+            System.out.println("---------------");
+            int seleccion = in.nextInt();
+            if (!(ordenes.get(seleccion - 1).getUsuario().getBoletas().isEmpty())) {
+                System.out.println("DETALLE BOLETAS: ");
+                System.out.println("boleta a nombre de: " + ordenes.get(seleccion - 1).getUsuario().getNombre());
+                ordenes.get(seleccion - 1).getUsuario().mostrarBoletas();
+            } else {
+                System.out.println("USUARIO SIN BOLETAS DISPONIBLES");
+            }
+        }
         return true;
-    }
-
-    public void mostrarPedido() {
-
     }
 
     public void menu() {
         System.out.println("---------------");
-
         System.out.println("SELECCIONA UNA OPCION");
         System.out.println("1.- ORDENAR");
         System.out.println("2.- PAGAR");
@@ -42,22 +49,15 @@ public class Carrito {
                 generarOrden();
                 break;
             case 2:
-                mostrarBoleta();
-
                 pagar();
-
                 break;
             case 3:
                 mostrarUsuarios();
                 break;
             case 4:
-
-                usuarios.add(new Usuario());
-
+                agregarUsuario();
                 break;
-
             case 5:
-
                 break;
             default:
                 break;
@@ -65,57 +65,34 @@ public class Carrito {
     }
 
     public void generarOrden() {
-        if (!usuarios.isEmpty()) {
-
-            System.out.println("---------------");
-            System.out.println("SELECCIONE SU USUARIO: ");
+        if (!ordenes.isEmpty()) {
             mostrarUsuarios();
             System.out.println("---------------");
-
             int index = in.nextInt();
-
-            ordenes.add(new Orden(usuarios.get(index - 1)));
-
-            ordenar();
-
-            // boletas.add(new Boleta(usuarios.get(index - 1), 10));
+            ordenar(index);
 
         } else {
             System.out.println("---------------");
-
             System.out.println("NO HAY USUARIOS DISPONIBLES");
         }
 
     }
 
-    public void ordenar() {
-        ordenes.get(ordenes.size() - 1).seleccionPizza();
-    }
-
-    public void mostrarBoleta() {
-        int i = 1;
-        if (!ordenes.isEmpty()) {
-
-            for (Orden orden : ordenes) {
-                System.out.println("BOLETA a nombre de :" + orden.getBoletas().get(i - 1).getUsuario().getNombre());
-            }
-
-        } else {
-            System.out.println("---------------");
-            System.out.println("NO HAY BOLETAS DISPONIBLES");
-        }
-
+    public void ordenar(int index) {
+        ordenes.get(index - 1).seleccionPizza(ordenes.get(index - 1).getUsuario());
     }
 
     public void mostrarUsuarios() {
         int i = 1;
-        if (!usuarios.isEmpty()) {
 
-            for (Usuario usuario : usuarios) {
-                System.out.println("---------------");
-                System.out.println(i + ".-" + usuario.getNombre());
+        if (!ordenes.isEmpty()) {
+            System.out.println("nombre:");
+
+            for (Orden orden : ordenes) {
+                System.out.println(i + ".- " + orden.getUsuario().getNombre());
                 i++;
             }
+
         } else {
             System.out.println("---------------");
             System.out.println("NO HAY USUARIOS DISPONIBLES");
@@ -123,4 +100,7 @@ public class Carrito {
 
     }
 
+    public void agregarUsuario() {
+        ordenes.add(new Orden(new Usuario()));
+    }
 }

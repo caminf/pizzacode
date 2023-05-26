@@ -1,6 +1,5 @@
 package com.pizzacode;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // aca se generan las boletas, estas estan asociadas a un usuario y una pizza 
@@ -8,23 +7,15 @@ import java.util.Scanner;
 public class Orden {
 
     private Scanner in = new Scanner(System.in);
-
     private Usuario usuario;
-    private ArrayList<Boleta> boletas = new ArrayList<>();
+    // private int num_orden;
 
-    /*-------------*/
-    private int num_orden;
-
-    // private boolean cupon;
     public Orden(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public void seleccionPizza() {
-
-        // tipo pizzas
+    public void seleccionPizza(Usuario usuario) {
         System.out.println("---------------");
-
         System.out.println("PIZZAS DISPONIBLES: ");
         System.out.println("1.- PIZZA CAMPESTRE");
         System.out.println("2.- PIZZA NAPOLITANA");
@@ -32,31 +23,37 @@ public class Orden {
         System.out.println("4.- PERSONALIZADA");
         System.out.println("5.- SALIR");
         System.out.println("---------------");
-
         int seleccion;
-
         do {
             seleccion = in.nextInt();
-            agregarPizza(seleccion);
+            agregarPizza(seleccion, usuario);
         } while (seleccion >= 5);
 
     }
 
-    public void agregarPizza(int seleccion) {
+    public void agregarPizza(int seleccion, Usuario usuario) {
+
         switch (seleccion) {
             case 1:
                 // Pizza Campestre
-                boletas.add(new Boleta(usuario));
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
 
             case 2:
                 // Pizza Napolitana
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 3:
                 // Pizza Pepperoni
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 4:
                 // Pizza Personalizada
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 5:
 
@@ -67,18 +64,14 @@ public class Orden {
 
     }
 
-    public void validarCupon() {
-
-    }
-
-    public ArrayList<Boleta> getBoletas() {
-        return boletas;
-    }
-
     public Usuario getUsuario() {
 
         return this.usuario;
 
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }
