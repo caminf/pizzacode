@@ -1,13 +1,14 @@
 package com.pizzacode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //contiene la informacion del usuario, el detalle de la pizza y el monto total.
 
 public class Boleta {
     private Usuario usuario;
     private double total;
-    private ArrayList<Pizza> pizzas = new ArrayList<>();
+    private List<Pizza> pizzas = new ArrayList<>();
 
     public Boleta(Usuario usuario) {
         this.usuario = usuario;
@@ -21,7 +22,7 @@ public class Boleta {
         this.total = total;
     }
 
-    public ArrayList<Pizza> getPizzas() {
+    public List<Pizza> getPizzas() {
         return pizzas;
     }
 
@@ -34,7 +35,7 @@ public class Boleta {
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario; 
+        this.usuario = usuario;
     }
 
 }

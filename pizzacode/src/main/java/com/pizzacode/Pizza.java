@@ -1,6 +1,7 @@
 package com.pizzacode;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // aca se encuentra la pizza, aca estan los metodos para crear las pizzas y para agregar o quitar ingredientes. 
@@ -12,7 +13,7 @@ public class Pizza {
     private String nombrePizza;
     private double costo;
     // ingredientes arraylist
-    private ArrayList<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes = new ArrayList<>();
 
     public Pizza(String nombrePizza, double costo) {
 
@@ -62,11 +63,13 @@ public class Pizza {
         boolean terminar = true;
 
         do {
-
+            separador();
             System.out.println("que ingredientes desea agregar: ");
             System.out.println("1.- Tomate");
             System.out.println("2.- Pollo");
             System.out.println("3.- Aceitunas");
+            separador();
+
             int seleccion = in.nextInt();
             switch (seleccion) {
                 case 1:
@@ -104,5 +107,8 @@ public class Pizza {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+    public void separador(){
+        System.out.println("---------------");
 
+    }
 }

@@ -1,5 +1,6 @@
 package com.pizzacode;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,17 +8,17 @@ import java.util.Scanner;
 
 public class Carrito {
     private Scanner in = new Scanner(System.in);
-    private ArrayList<Orden> ordenes = new ArrayList<>();
+    private List<Orden> ordenes = new ArrayList<>();
 
     public boolean pagar() {
         if (ordenes.isEmpty()) {
-            System.out.println("---------------");
+            separador();
             System.out.println("NO HAY BOLETAS DISPONIBLES");
         } else {
             mostrarUsuarios();
-            System.out.println("---------------");
+            separador();
             System.out.println("seleccione usuario");
-            System.out.println("---------------");
+            separador();
             int seleccion = in.nextInt();
             if (!(ordenes.get(seleccion - 1).getUsuario().getBoletas().isEmpty())) {
                 System.out.println("DETALLE BOLETAS: ");
@@ -30,16 +31,20 @@ public class Carrito {
         return true;
     }
 
+    public void separador(){
+        System.out.println("---------------");
+
+    }
 
     public void menu() {
-        System.out.println("---------------");
+        separador();
         System.out.println("SELECCIONA UNA OPCION");
         System.out.println("1.- ORDENAR");
         System.out.println("2.- PAGAR");
         System.out.println("3.- VER USUARIOS");
         System.out.println("4.- REGISTRAR USUARIOS");
         System.out.println("5.- SALIR");
-        System.out.println("---------------");
+        separador();
         int seleccion = in.nextInt();
 
 
@@ -70,12 +75,12 @@ public class Carrito {
     public void generarOrden() {
         if (!ordenes.isEmpty()) {
             mostrarUsuarios();
-            System.out.println("---------------");
+            separador();
             int index = in.nextInt();
             ordenar(index);
 
         } else {
-            System.out.println("---------------");
+            separador();
             System.out.println("NO HAY USUARIOS DISPONIBLES");
         }
 
@@ -97,7 +102,7 @@ public class Carrito {
             }
 
         } else {
-            System.out.println("---------------");
+            separador();
             System.out.println("NO HAY USUARIOS DISPONIBLES");
         }
 
