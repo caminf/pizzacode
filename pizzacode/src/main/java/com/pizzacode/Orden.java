@@ -1,6 +1,5 @@
 package com.pizzacode;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // aca se generan las boletas, estas estan asociadas a un usuario y una pizza 
@@ -8,61 +7,53 @@ import java.util.Scanner;
 public class Orden {
 
     private Scanner in = new Scanner(System.in);
+    private Usuario usuario;
+    // private int num_orden;
 
-    private ArrayList<Pizza> pizzas = new ArrayList<>();
-    private ArrayList<Usuario> usuarios = new ArrayList<>();
-    private ArrayList<Boleta> boletas = new ArrayList<>();
-    /*-------------*/
-    private int num_orden;
-    private String nombreComprador;
-    // private boolean cupon;
+    public Orden(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
-    public void comprarPizza(Usuario user) {
-
-        // tipo pizzas
+    public void seleccionPizza(Usuario usuario) {
+        System.out.println("---------------");
         System.out.println("PIZZAS DISPONIBLES: ");
         System.out.println("1.- PIZZA CAMPESTRE");
         System.out.println("2.- PIZZA NAPOLITANA");
         System.out.println("3.- PIZZA PEPPERONI");
         System.out.println("4.- PERSONALIZADA");
         System.out.println("5.- SALIR");
-
+        System.out.println("---------------");
         int seleccion;
-
         do {
             seleccion = in.nextInt();
-            seleccionPizza(seleccion, user);
+            agregarPizza(seleccion, usuario);
         } while (seleccion >= 5);
 
     }
 
-    public void seleccionPizza(int seleccion, Usuario user) {
+    public void agregarPizza(int seleccion, Usuario usuario) {
+
         switch (seleccion) {
             case 1:
                 // Pizza Campestre
-                usuarios.add(user);
-                pizzas.add(new Pizza(seleccion, usuarios.get(usuarios.size() - 1)));
-                boletas.add(new Boleta(usuarios.get(usuarios.size() - 1), pizzas.get(pizzas.size() - 1).getCosto()));
+                this.usuario.agregarBoleta(new Boleta(usuario));
 
                 break;
 
             case 2:
                 // Pizza Napolitana
-                usuarios.add(user);
-                pizzas.add(new Pizza(seleccion, usuarios.get(usuarios.size() - 1)));
-                boletas.add(new Boleta(usuarios.get(usuarios.size() - 1), pizzas.get(pizzas.size() - 1).getCosto()));
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 3:
                 // Pizza Pepperoni
-                usuarios.add(user);
-                pizzas.add(new Pizza(seleccion, usuarios.get(usuarios.size() - 1)));
-                boletas.add(new Boleta(usuarios.get(usuarios.size() - 1), pizzas.get(pizzas.size() - 1).getCosto()));
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 4:
                 // Pizza Personalizada
-                usuarios.add(user);
-                pizzas.add(new Pizza(seleccion, usuarios.get(usuarios.size() - 1)));
-                boletas.add(new Boleta(usuarios.get(usuarios.size() - 1), pizzas.get(pizzas.size() - 1).getCosto()));
+                this.usuario.agregarBoleta(new Boleta(usuario));
+
                 break;
             case 5:
 
@@ -73,14 +64,14 @@ public class Orden {
 
     }
 
-    public void validarCupon() {
+    public Usuario getUsuario() {
 
-        for (int i = 0; i < pizzas.size(); i++) {
-
-        }
+        return this.usuario;
 
     }
 
-   
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
 }
