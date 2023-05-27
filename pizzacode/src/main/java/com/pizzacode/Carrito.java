@@ -31,10 +31,6 @@ public class Carrito {
     }
 
 
-    public void mostrarPedido() {
-
-    }
-
     public void menu() {
         System.out.println("---------------");
         System.out.println("SELECCIONA UNA OPCION");
