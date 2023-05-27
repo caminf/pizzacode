@@ -30,6 +30,11 @@ public class Carrito {
         return true;
     }
 
+
+    public void mostrarPedido() {
+
+    }
+
     public void menu() {
         System.out.println("---------------");
         System.out.println("SELECCIONA UNA OPCION");
@@ -37,8 +42,10 @@ public class Carrito {
         System.out.println("2.- PAGAR");
         System.out.println("3.- VER USUARIOS");
         System.out.println("4.- REGISTRAR USUARIOS");
+        System.out.println("5.- SALIR");
         System.out.println("---------------");
         int seleccion = in.nextInt();
+
 
         // validar entrada
 

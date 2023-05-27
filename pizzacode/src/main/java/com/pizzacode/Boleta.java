@@ -34,7 +34,7 @@ public class Boleta {
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.usuario = usuario; 
     }
 
 }
