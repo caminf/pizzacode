@@ -10,7 +10,7 @@
  
 # Indice
 
-* [Orden de funcinamiento en el programa](README.md#orden-del-funcionamiento-en-el-programa)
+* [Orden de funcinamiento en el programa](https://github.com/caminf/pizzacode/edit/arreglando.readme/README.md#orden-de-funcionamiento-en-el-programa)
 
 
 ## ORDEN DE FUNCIONAMIENTO EN EL PROGRAMA
