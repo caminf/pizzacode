@@ -26,7 +26,7 @@ public class Boleta {
         return pizzas;
     }
 
-    public void setPizzas(ArrayList<Pizza> pizzas) {
+    public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
     }
 
