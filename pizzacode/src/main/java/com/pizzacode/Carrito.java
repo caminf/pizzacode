@@ -38,9 +38,9 @@ public class Carrito {
         System.out.println("3.- VER USUARIOS");
         System.out.println("4.- REGISTRAR USUARIOS");
         System.out.println("---------------");
+        int seleccion = in.nextInt();
 
         // validar entrada
-        int seleccion = in.nextInt();
 
         switch (seleccion) {
             case 1:

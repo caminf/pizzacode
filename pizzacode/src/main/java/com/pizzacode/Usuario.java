@@ -48,11 +48,8 @@ public class Usuario {
     }
 
     public boolean hasBoleta() {
-        if (this.boletas.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+
+        return this.boletas.isEmpty();
 
     }
 
