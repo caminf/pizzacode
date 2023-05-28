@@ -1,12 +1,13 @@
 package com.pizzacode;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Usuario {
 
     private Scanner in = new Scanner(System.in);
-    private ArrayList<Boleta> boletas = new ArrayList<>();
+    private List<Boleta> boletas = new ArrayList<>();
     private String nombre;
 
     public Usuario(String nombre) {
@@ -15,12 +16,12 @@ public class Usuario {
 
     public Usuario() {
         // validar
-        System.out.println("---------------");
+        separador();
         System.out.println("INGRESE SU NOMBRE: ");
-        System.out.println("---------------");
+        separador();
         String nombre = in.nextLine();
         setNombre(nombre);
-        System.out.println("---------------");
+        separador();
         System.out.println("USUARIO REGISTRADO EXITOSAMENTE");
 
     }
@@ -43,7 +44,7 @@ public class Usuario {
         }
     }
 
-    public ArrayList<Boleta> getBoletas() {
+    public List<Boleta> getBoletas() {
         return boletas;
     }
 
@@ -53,4 +54,7 @@ public class Usuario {
 
     }
 
+    public void separador() {
+        System.out.println("---------------");
+    }
 }

@@ -8,21 +8,20 @@ public class Orden {
 
     private Scanner in = new Scanner(System.in);
     private Usuario usuario;
-    // private int num_orden;
 
     public Orden(Usuario usuario) {
         this.usuario = usuario;
     }
 
     public void seleccionPizza(Usuario usuario) {
-        System.out.println("---------------");
+        separador();
         System.out.println("PIZZAS DISPONIBLES: ");
         System.out.println("1.- PIZZA CAMPESTRE");
         System.out.println("2.- PIZZA NAPOLITANA");
         System.out.println("3.- PIZZA PEPPERONI");
         System.out.println("4.- PERSONALIZADA");
         System.out.println("5.- SALIR");
-        System.out.println("---------------");
+        separador();
         int seleccion;
         do {
             seleccion = in.nextInt();
@@ -73,5 +72,8 @@ public class Orden {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    public void separador(){
+        System.out.println("---------------");
 
+    }
 }
