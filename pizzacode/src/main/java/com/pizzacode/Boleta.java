@@ -26,8 +26,8 @@ public class Boleta {
         return pizzas;
     }
 
-    public void setPizzas(List<Pizza> pizzas) {
-        this.pizzas = pizzas;
+    public void setPizzas(Pizza pizza) {
+        this.pizzas.add(pizza);
     }
 
     public Usuario getUsuario() {

@@ -107,6 +107,7 @@ public class Pizza {
     public void setCosto(double costo) {
         this.costo = costo;
     }
+   
     public void separador(){
         System.out.println("---------------");
 

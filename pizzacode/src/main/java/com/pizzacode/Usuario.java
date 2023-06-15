@@ -41,9 +41,11 @@ public class Usuario {
     public void mostrarBoletas() {
         for (Boleta boleta : boletas) {
             System.out.println("BOLETAS: " + boleta.getTotal());
+            System.out.println("NOMBRE: " + boleta.getUsuario().getNombre());
         }
-    }
 
+    }
+    
     public List<Boleta> getBoletas() {
         return boletas;
     }

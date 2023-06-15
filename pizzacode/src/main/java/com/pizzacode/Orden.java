@@ -36,22 +36,26 @@ public class Orden {
             case 1:
                 // Pizza Campestre
                 this.usuario.agregarBoleta(new Boleta(usuario));
+                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(1));
 
                 break;
 
             case 2:
                 // Pizza Napolitana
                 this.usuario.agregarBoleta(new Boleta(usuario));
+                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(2));
 
                 break;
             case 3:
                 // Pizza Pepperoni
                 this.usuario.agregarBoleta(new Boleta(usuario));
+                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(3));
 
                 break;
             case 4:
                 // Pizza Personalizada
                 this.usuario.agregarBoleta(new Boleta(usuario));
+                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(4));
 
                 break;
             case 5:
@@ -72,7 +76,8 @@ public class Orden {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    public void separador(){
+
+    public void separador() {
         System.out.println("---------------");
 
     }
