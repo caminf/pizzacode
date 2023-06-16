@@ -29,6 +29,7 @@ public class Pizza {
                 // Pizza Campestre
                 this.nombrePizza = "Pizza campestre";
                 this.costo = 10;
+
                 break;
 
             case 2:
@@ -107,8 +108,8 @@ public class Pizza {
     public void setCosto(double costo) {
         this.costo = costo;
     }
-   
-    public void separador(){
+
+    public void separador() {
         System.out.println("---------------");
 
     }
