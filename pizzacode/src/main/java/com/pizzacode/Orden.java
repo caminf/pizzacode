@@ -25,12 +25,12 @@ public class Orden {
         int seleccion;
         do {
             seleccion = in.nextInt();
-            agregarPizza(seleccion, usuario);
+            guardarBoleta(seleccion, usuario);
         } while (seleccion >= 5);
 
     }
 
-    public void agregarPizza(int seleccion, Usuario usuario) {
+    public void guardarBoleta(int seleccion, Usuario usuario) {
 
         switch (seleccion) {
             case 1:

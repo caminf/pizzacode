@@ -38,4 +38,9 @@ public class Boleta {
         this.usuario = usuario;
     }
 
+    public String nombreBoleta() {
+        return this.usuario.getNombre();
+    }
+
+    // isPagad9
 }

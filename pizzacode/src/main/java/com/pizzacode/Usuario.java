@@ -34,6 +34,7 @@ public class Usuario {
         return this.nombre;
     }
 
+    //refactorizable
     public void agregarBoleta(Boleta boleta) {
         boletas.add(boleta);
     }
