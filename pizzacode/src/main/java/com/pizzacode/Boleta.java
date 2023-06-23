@@ -6,12 +6,32 @@ import java.util.List;
 //contiene la informacion del usuario, el detalle de la pizza y el monto total.
 
 public class Boleta {
+
     private Usuario usuario;
     private double total;
     private List<Pizza> pizzas = new ArrayList<>();
 
     public Boleta(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String nombreBoleta() {
+        String nombreBoleta = this.usuario.getNombre();
+        return nombreBoleta;
+    }
+
+    public void agregarPizza(int seleccion) {
+        Pizza pizza = new Pizza(seleccion);
+        pizzas.add(pizza);
+    }
+
+    public double calcularTotal() {
+        // if pizzas is empty
+
+        for (int i = 0; i < pizzas.size(); i++) {
+            total = total + pizzas.get(i).getCosto();
+        }
+        return total;
     }
 
     public double getTotal() {
@@ -36,10 +56,6 @@ public class Boleta {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public String nombreBoleta() {
-        return this.usuario.getNombre();
     }
 
     // isPagad9

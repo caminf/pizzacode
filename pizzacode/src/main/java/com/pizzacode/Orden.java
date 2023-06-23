@@ -31,13 +31,15 @@ public class Orden {
     }
 
     public void guardarBoleta(int seleccion, Usuario usuario) {
-
+        //int lastUser = this.usuario.getBoletas().size()-1;
         switch (seleccion) {
             case 1:
                 // Pizza Campestre
                 this.usuario.agregarBoleta(new Boleta(usuario));
+                //.agregarPizza
+                //this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
                 this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(1));
-
+                
                 break;
 
             case 2:
