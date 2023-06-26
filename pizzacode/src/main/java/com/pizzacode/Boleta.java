@@ -21,17 +21,25 @@ public class Boleta {
     }
 
     public void agregarPizza(int seleccion) {
-        Pizza pizza = new Pizza(seleccion);
-        pizzas.add(pizza);
+        // Pizza pizza = new Pizza(seleccion);
+        pizzas.add(new Pizza(seleccion));
     }
 
     public double calcularTotal() {
         // if pizzas is empty
-
         for (int i = 0; i < pizzas.size(); i++) {
             total = total + pizzas.get(i).getCosto();
         }
         return total;
+    }
+
+    public void mostrarPizzas() {
+        for (int i = 0; i < pizzas.size(); i++) {
+            System.out.println("Nombre Pizza: " + pizzas.get(i).getNombrePizza());
+            System.out.println("Costo Pizza: " + pizzas.get(i).getCosto());
+
+        }
+
     }
 
     public double getTotal() {
@@ -58,5 +66,4 @@ public class Boleta {
         this.usuario = usuario;
     }
 
-    // isPagad9
 }

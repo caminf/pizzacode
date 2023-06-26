@@ -7,34 +7,41 @@ import java.util.Scanner;
 //aca se encuentra el menu principal.
 
 public class Carrito {
-    
+
     private Scanner in = new Scanner(System.in);
     private List<Orden> ordenes = new ArrayList<>();
 
     public boolean pagar() {
         if (ordenes.isEmpty()) {
+
             separador();
             System.out.println("NO HAY BOLETAS DISPONIBLES");
+
         } else {
+
             mostrarUsuarios();
+
             separador();
-            System.out.println("seleccione usuario");
+            System.out.println("SELECCIONE USUARIO");
             separador();
             int seleccion = in.nextInt();
+            // int lastUser = seleccion - 1;
             if (!(ordenes.get(seleccion - 1).getUsuario().getBoletas().isEmpty())) {
+
                 System.out.println("DETALLE BOLETAS: ");
-                System.out.println("boleta a nombre de: " + ordenes.get(seleccion - 1).getUsuario().getNombre());
+
                 ordenes.get(seleccion - 1).getUsuario().mostrarBoletas();
+
+                for (int i = 0; i < ordenes.get(seleccion - 1).getUsuario().getBoletas().size(); i++) {
+                    ordenes.get(seleccion - 1).getUsuario().getBoletas().get(i).mostrarPizzas();
+                }
+
             } else {
+
                 System.out.println("USUARIO SIN BOLETAS DISPONIBLES");
             }
         }
         return true;
-    }
-
-    public void separador(){
-        System.out.println("---------------");
-
     }
 
     public void menu() {
@@ -48,13 +55,10 @@ public class Carrito {
         separador();
         int seleccion = in.nextInt();
 
-
         // validar entrada
-
+        // IF para refactor
         switch (seleccion) {
             case 1:
-                // validar que no entre si no existe usuario
-                // DO WHILE SEGUN CUANTAS PIZZAS DESEE.
                 generarOrden();
                 break;
             case 2:
@@ -64,7 +68,8 @@ public class Carrito {
                 mostrarUsuarios();
                 break;
             case 4:
-                agregarUsuario();
+                Usuario usuario = new Usuario();
+                registarUsuario(usuario);
                 break;
             case 5:
                 break;
@@ -88,6 +93,9 @@ public class Carrito {
     }
 
     public void ordenar(int index) {
+        // int lastUser = index - 1;
+        // Usuario user = ordenes.get(lastUser).getUsuario();
+        // ordenes.get(lastUser).seleccionPizza(user);
         ordenes.get(index - 1).seleccionPizza(ordenes.get(index - 1).getUsuario());
     }
 
@@ -95,7 +103,8 @@ public class Carrito {
         int i = 1;
 
         if (!ordenes.isEmpty()) {
-            System.out.println("nombre:");
+
+            System.out.println("USUARIOS REGISTRADOS: ");
 
             for (Orden orden : ordenes) {
                 System.out.println(i + ".- " + orden.getUsuario().getNombre());
@@ -109,7 +118,22 @@ public class Carrito {
 
     }
 
-    public void agregarUsuario() {
-        ordenes.add(new Orden(new Usuario()));
+    public void registarUsuario(Usuario usuario) {
+
+        // Orden orden = new Orden(usuario);
+        ordenes.add(new Orden(usuario));
     }
+
+    public void separador() {
+        System.out.println("---------------");
+    }
+
+    public List<Orden> getOrdenes() {
+        return ordenes;
+    }
+
+    public void setOrdenes(List<Orden> ordenes) {
+        this.ordenes = ordenes;
+    }
+
 }

@@ -62,8 +62,11 @@ public class BoletaTest {
         Assertions.assertEquals(usuario.getNombre(), nombre_usuario);
     }
 
-    public void isPagado() {
+    @Test
+    public void displayPizzas() {
 
+        boleta.mostrarPizzas();
+        Assertions.assertNotNull(boleta.getPizzas());
     }
 
 }
