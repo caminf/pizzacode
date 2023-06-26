@@ -22,6 +22,10 @@ public class Ingrediente {
         this.precio = precio;
     }
 
+    public Ingrediente() {
+    }
+    
+
     public String getNombre() {
         return nombre;
     }

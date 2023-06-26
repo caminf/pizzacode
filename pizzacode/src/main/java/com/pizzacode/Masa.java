@@ -7,10 +7,18 @@ public class Masa extends Ingrediente {
     private TipoMasa tipo;
     private Tamanio tamanio;
 
-    public Masa(String nombre, double precio) {
-        super(nombre, precio);
+    public Masa(String nombre) {
+        super(nombre);
 
     }
+
+    public Masa(double precio, TipoMasa tipo, Tamanio tamanio) {
+        super(precio);
+        this.tipo = tipo;
+        this.tamanio = tamanio;
+        
+    }
+    
 
     public TipoMasa getTipo() {
         return tipo;

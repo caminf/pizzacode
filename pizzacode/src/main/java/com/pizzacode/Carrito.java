@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //aca se encuentra el menu principal.
-
 public class Carrito {
 
     private Scanner in = new Scanner(System.in);
@@ -50,37 +49,42 @@ public class Carrito {
     }
 
     public void menu() {
-        separador();
-        System.out.println("SELECCIONA UNA OPCION");
-        System.out.println("1.- ORDENAR");
-        System.out.println("2.- PAGAR");
-        System.out.println("3.- VER USUARIOS");
-        System.out.println("4.- REGISTRAR USUARIOS");
-        System.out.println("5.- SALIR");
-        separador();
-        int seleccion = in.nextInt();
+        boolean terminar = true;
 
-        // validar entrada
-        // IF para refactor
-        switch (seleccion) {
-            case 1:
-                generarOrden();
-                break;
-            case 2:
-                pagar();
-                break;
-            case 3:
-                mostrarUsuarios();
-                break;
-            case 4:
-                Usuario usuario = new Usuario();
-                registarUsuario(usuario);
-                break;
-            case 5:
-                break;
-            default:
-                break;
-        }
+        do {
+            System.out.println("SELECCIONA UNA OPCION");
+            System.out.println("1.- ORDENAR");
+            System.out.println("2.- PAGAR");
+            System.out.println("3.- VER USUARIOS");
+            System.out.println("4.- REGISTRAR USUARIOS");
+            System.out.println("5.- SALIR");
+            separador();
+            int seleccion = in.nextInt();
+
+            // validar entrada
+
+            switch (seleccion) {
+                case 1:
+                    generarOrden();
+                    break;
+                case 2:
+                    pagar();
+                    break;
+                case 3:
+                    mostrarUsuarios();
+                    break;
+                case 4:
+                    Usuario usuario = new Usuario();
+                    registarUsuario(usuario);
+                    break;
+                case 5:
+                    terminar = false;
+                    break;
+                default:
+                    terminar = false;
+                    break;
+            }
+        } while (terminar);
     }
 
     public void generarOrden() {
