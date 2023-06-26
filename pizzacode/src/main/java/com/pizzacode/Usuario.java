@@ -26,26 +26,24 @@ public class Usuario {
 
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return this.nombre;
-    }
-
+    // refactorizable
     public void agregarBoleta(Boleta boleta) {
         boletas.add(boleta);
     }
 
     public void mostrarBoletas() {
-        for (Boleta boleta : boletas) {
-            System.out.println("BOLETAS: " + boleta.getTotal());
-            System.out.println("NOMBRE: " + boleta.getUsuario().getNombre());
-        }
+
+        System.out.println("BOLETAS: " + boletas.size());
+        System.out.println("NOMBRE: " + this.nombre);
 
     }
-    
+
+    public void pagarBoleta(int seleccionBoleta) {
+
+        boletas.remove(seleccionBoleta - 1);
+
+    }
+
     public List<Boleta> getBoletas() {
         return boletas;
     }
@@ -56,7 +54,16 @@ public class Usuario {
 
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
     public void separador() {
         System.out.println("---------------");
     }
+
 }
