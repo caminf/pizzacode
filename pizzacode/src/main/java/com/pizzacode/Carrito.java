@@ -25,7 +25,7 @@ public class Carrito {
             System.out.println("SELECCIONE USUARIO");
             separador();
             int seleccion = in.nextInt();
-            // int lastUser = seleccion - 1;
+            // int seleccionUsr = seleccion - 1;
             if (!(ordenes.get(seleccion - 1).getUsuario().getBoletas().isEmpty())) {
 
                 System.out.println("DETALLE BOLETAS: ");
@@ -35,6 +35,11 @@ public class Carrito {
                 for (int i = 0; i < ordenes.get(seleccion - 1).getUsuario().getBoletas().size(); i++) {
                     ordenes.get(seleccion - 1).getUsuario().getBoletas().get(i).mostrarPizzas();
                 }
+                separador();
+                System.out.println("SELECCIONAR BOLETA PARA PAGAR");
+                separador();
+                int seleccionBoleta = in.nextInt();
+                ordenes.get(seleccion - 1).getUsuario().pagarBoleta(seleccionBoleta);
 
             } else {
 

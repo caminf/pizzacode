@@ -38,6 +38,12 @@ public class Usuario {
 
     }
 
+    public void pagarBoleta(int seleccionBoleta) {
+
+        boletas.remove(seleccionBoleta - 1);
+
+    }
+
     public List<Boleta> getBoletas() {
         return boletas;
     }
