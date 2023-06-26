@@ -2,7 +2,7 @@ package com.pizzacode;
 
 import java.util.Scanner;
 
-// aca se generan las boletas, estas estan asociadas a un usuario y una pizza 
+// aca se generan las boletas, estas estan asociadas a un usuario y una boleta 
 
 public class Orden {
 
@@ -25,18 +25,18 @@ public class Orden {
         int seleccion;
         do {
             seleccion = in.nextInt();
-            agregarPizza(seleccion, usuario);
+            guardarBoleta(seleccion, usuario);
         } while (seleccion >= 5);
 
     }
 
-    public void agregarPizza(int seleccion, Usuario usuario) {
-
+    public void guardarBoleta(int seleccion, Usuario usuario) {
         switch (seleccion) {
             case 1:
-                // Pizza Campestre
                 this.usuario.agregarBoleta(new Boleta(usuario));
-                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(1));
+                int lastUser = this.usuario.getBoletas().size() - 1;
+
+                this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
                 break;
 
@@ -66,6 +66,8 @@ public class Orden {
         }
 
     }
+    
+    
 
     public Usuario getUsuario() {
 
