@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //aca se encuentra el menu principal.
-
 public class Carrito {
-    
+
     private Scanner in = new Scanner(System.in);
     private List<Orden> ordenes = new ArrayList<>();
 
@@ -32,13 +31,15 @@ public class Carrito {
         return true;
     }
 
-    public void separador(){
+    public void separador() {
         System.out.println("---------------");
 
     }
 
     public void menu() {
-        separador();
+        boolean terminar = true;
+        
+        do {    
         System.out.println("SELECCIONA UNA OPCION");
         System.out.println("1.- ORDENAR");
         System.out.println("2.- PAGAR");
@@ -48,9 +49,7 @@ public class Carrito {
         separador();
         int seleccion = in.nextInt();
 
-
         // validar entrada
-
         switch (seleccion) {
             case 1:
                 // validar que no entre si no existe usuario
@@ -67,10 +66,13 @@ public class Carrito {
                 agregarUsuario();
                 break;
             case 5:
+                terminar = false;
                 break;
             default:
+                terminar = false;
                 break;
         }
+        } while (terminar);
     }
 
     public void generarOrden() {

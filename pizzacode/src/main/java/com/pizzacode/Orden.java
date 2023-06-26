@@ -15,10 +15,10 @@ public class Orden {
 
     public void seleccionPizza(Usuario usuario) {
         separador();
-        System.out.println("PIZZAS DISPONIBLES: ");
-        System.out.println("1.- PIZZA CAMPESTRE");
-        System.out.println("2.- PIZZA NAPOLITANA");
-        System.out.println("3.- PIZZA PEPPERONI");
+        System.out.println("PIZZAS DISPONIBLES: (precio base)");
+        System.out.println("1.- PIZZA CAMPESTRE_____$3500");
+        System.out.println("2.- PIZZA NAPOLITANA____$2700");
+        System.out.println("3.- PIZZA PEPPERONI_____$1700");
         System.out.println("4.- PERSONALIZADA");
         System.out.println("5.- SALIR");
         separador();
