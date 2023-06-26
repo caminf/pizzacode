@@ -7,7 +7,6 @@ import java.util.Scanner;
 //aca se encuentra el menu principal.
 public class Carrito {
 
-
     private Scanner in = new Scanner(System.in);
     private List<Orden> ordenes = new ArrayList<>();
 
@@ -49,47 +48,42 @@ public class Carrito {
         return true;
     }
 
-    public void separador(){
-        System.out.println("---------------");
-
-    }
-
     public void menu() {
         boolean terminar = true;
-        
-        do {    
-        System.out.println("SELECCIONA UNA OPCION");
-        System.out.println("1.- ORDENAR");
-        System.out.println("2.- PAGAR");
-        System.out.println("3.- VER USUARIOS");
-        System.out.println("4.- REGISTRAR USUARIOS");
-        System.out.println("5.- SALIR");
-        separador();
-        int seleccion = in.nextInt();
 
-        // validar entrada
+        do {
+            System.out.println("SELECCIONA UNA OPCION");
+            System.out.println("1.- ORDENAR");
+            System.out.println("2.- PAGAR");
+            System.out.println("3.- VER USUARIOS");
+            System.out.println("4.- REGISTRAR USUARIOS");
+            System.out.println("5.- SALIR");
+            separador();
+            int seleccion = in.nextInt();
 
-        switch (seleccion) {
-            case 1:
-                generarOrden();
-                break;
-            case 2:
-                pagar();
-                break;
-            case 3:
-                mostrarUsuarios();
-                break;
-            case 4:
-                Usuario usuario = new Usuario();
-                registarUsuario(usuario);
-                break;
-            case 5:
-                terminar = false;
-                break;
-            default:
-                terminar = false;
-                break;
-        }
+            // validar entrada
+
+            switch (seleccion) {
+                case 1:
+                    generarOrden();
+                    break;
+                case 2:
+                    pagar();
+                    break;
+                case 3:
+                    mostrarUsuarios();
+                    break;
+                case 4:
+                    Usuario usuario = new Usuario();
+                    registarUsuario(usuario);
+                    break;
+                case 5:
+                    terminar = false;
+                    break;
+                default:
+                    terminar = false;
+                    break;
+            }
         } while (terminar);
     }
 
