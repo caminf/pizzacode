@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.pizzacode.PizzaTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 1.359 s <<< FAILURE! - in com.pizzacode.PizzaTest
+checkSeleccionarTamanio{Pizza}  Time elapsed: 1.262 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [com.pizzacode.Pizza pizzaPrueba] in method [public void com.pizzacode.PizzaTest.checkSeleccionarTamanio(com.pizzacode.Pizza)].
+
+checkPizza{int}  Time elapsed: 0.004 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [int seleccion] in method [public void com.pizzacode.PizzaTest.checkPizza(int)].
+
+checkSeleccionarSalsa{Pizza}  Time elapsed: 0.003 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [com.pizzacode.Pizza pizza] in method [public void com.pizzacode.PizzaTest.checkSeleccionarSalsa(com.pizzacode.Pizza)].
+
+checkPizzaNapolitana{int}  Time elapsed: 0.002 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [int seleccion] in method [public void com.pizzacode.PizzaTest.checkPizzaNapolitana(int)].
+
