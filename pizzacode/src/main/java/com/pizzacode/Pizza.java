@@ -17,7 +17,7 @@ public class Pizza {
     public Pizza(String nombrePizza) {
 
         this.nombrePizza = nombrePizza;
-
+        
         this.costo = 10;
 
     }

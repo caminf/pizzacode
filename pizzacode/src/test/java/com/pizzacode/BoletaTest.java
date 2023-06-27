@@ -6,8 +6,6 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class BoletaTest {
     // Boleta Test, la boleta es aquella que contiene el precio de las pizzas.
@@ -29,9 +27,9 @@ public class BoletaTest {
 
     @Test
     public void checkAddPizzas() {
-        Pizza seleccionPizza = new Pizza("Pizza Test");
+        Pizza PizzaTest = new Pizza("Pizza Test");
 
-        boleta.agregarPizza(seleccionPizza);
+        boleta.agregarPizza(PizzaTest);
 
         Assertions.assertFalse(boleta.getPizzas().isEmpty());
     }
@@ -39,6 +37,7 @@ public class BoletaTest {
     @Test
     public void checkTotal() {
         Pizza pizzaExp = new Pizza("Pizza expexted");
+
         Pizza pizzaTest = new Pizza("Pizza given");
 
         boleta.agregarPizza(pizzaTest);
