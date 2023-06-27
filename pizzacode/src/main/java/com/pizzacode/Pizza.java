@@ -12,7 +12,7 @@ public class Pizza {
     private String nombrePizza;
     private double costo;
     // ingredientes arraylist
-    private List<Ingrediente> ingredientes = new ArrayList<>();
+    protected List<Ingrediente> ingredientes = new ArrayList<>();
 
     public Pizza(String nombrePizza) {
 
@@ -93,7 +93,7 @@ public class Pizza {
         }
     }
 
-    private void seleccionarTamanio(Pizza pizza) {
+    protected void seleccionarTamanio(Pizza pizza) {
 
         separador();
         System.out.println("Seleccione tipo de masa:");
@@ -146,7 +146,7 @@ public class Pizza {
 
     }
 
-    private void seleccionarSalsa(Pizza pizza) {
+    public  void seleccionarSalsa(Pizza pizza) {
 
         System.out.println("Seleccione su salsa:");
         System.out.println("1.- Salsa de tomate_____+$500");
@@ -166,7 +166,6 @@ public class Pizza {
             default:
                 break;
         }
-
     }
 
     private void agregarIngrediente(Pizza pizza) {
