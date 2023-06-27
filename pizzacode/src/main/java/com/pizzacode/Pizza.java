@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Pizza {
 
     private Scanner in = new Scanner(System.in);
-
     private String nombrePizza;
     private double costo;
     // ingredientes arraylist
@@ -142,8 +141,6 @@ public class Pizza {
             default:
                 break;
         }
-        pizza.ingredientes.add(new Masa(precio, tipoMasa, tamanio));
-
     }
 
     public  void seleccionarSalsa(Pizza pizza) {
