@@ -2,7 +2,7 @@ package com.pizzacode;
 
 import java.util.Scanner;
 
-// aca se generan las boletas, estas estan asociadas a un usuario y una pizza 
+// aca se generan las boletas, estas estan asociadas a un usuario y una boleta 
 
 public class Orden {
 
@@ -15,28 +15,28 @@ public class Orden {
 
     public void seleccionPizza(Usuario usuario) {
         separador();
-        System.out.println("PIZZAS DISPONIBLES: ");
-        System.out.println("1.- PIZZA CAMPESTRE");
-        System.out.println("2.- PIZZA NAPOLITANA");
-        System.out.println("3.- PIZZA PEPPERONI");
+        System.out.println("PIZZAS DISPONIBLES: (precio base)");
+        System.out.println("1.- PIZZA CAMPESTRE_____$3500");
+        System.out.println("2.- PIZZA NAPOLITANA____$2700");
+        System.out.println("3.- PIZZA PEPPERONI_____$1700");
         System.out.println("4.- PERSONALIZADA");
         System.out.println("5.- SALIR");
         separador();
         int seleccion;
         do {
             seleccion = in.nextInt();
-            agregarPizza(seleccion, usuario);
+            guardarBoleta(seleccion, usuario);
         } while (seleccion >= 5);
 
     }
 
-    public void agregarPizza(int seleccion, Usuario usuario) {
-
+    public void guardarBoleta(int seleccion, Usuario usuario) {
         switch (seleccion) {
             case 1:
-                // Pizza Campestre
                 this.usuario.agregarBoleta(new Boleta(usuario));
-                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(1));
+                int lastUser = this.usuario.getBoletas().size() - 1;
+
+                this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
                 break;
 
@@ -66,6 +66,8 @@ public class Orden {
         }
 
     }
+    
+    
 
     public Usuario getUsuario() {
 
