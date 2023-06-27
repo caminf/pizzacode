@@ -25,6 +25,11 @@ public class Boleta {
         pizzas.add(new Pizza(seleccion));
     }
 
+    public void agregarPizza(Pizza pizza) {
+        // Pizza pizza = new Pizza(seleccion);
+        pizzas.add(pizza);
+    }
+
     public double calcularTotal() {
         // if pizzas is empty
         for (int i = 0; i < pizzas.size(); i++) {

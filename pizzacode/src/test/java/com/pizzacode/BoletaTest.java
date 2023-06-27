@@ -27,22 +27,23 @@ public class BoletaTest {
 
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 3, 4, 5 })
-    public void checkAddPizzas(int seleccion) {
+    @Test
+    public void checkAddPizzas() {
+        Pizza seleccionPizza = new Pizza("Pizza Test");
 
-        boleta.agregarPizza(seleccion);
+        boleta.agregarPizza(seleccionPizza);
 
         Assertions.assertFalse(boleta.getPizzas().isEmpty());
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = { 1, 2, 3, 4, 5 })
-    public void checkTotal(int seleccion) {
+    @Test
+    public void checkTotal() {
+        Pizza pizzaExp = new Pizza("Pizza expexted");
+        Pizza pizzaTest = new Pizza("Pizza given");
 
-        boleta.agregarPizza(seleccion);
+        boleta.agregarPizza(pizzaTest);
 
-        pizzas.add(new Pizza(seleccion));
+        pizzas.add(pizzaExp);
 
         total = boleta.calcularTotal();
 
@@ -68,7 +69,5 @@ public class BoletaTest {
         boleta.mostrarPizzas();
         Assertions.assertNotNull(boleta.getPizzas());
     }
-
-    
 
 }

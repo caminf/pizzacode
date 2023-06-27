@@ -3,85 +3,115 @@ package com.pizzacode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 // aca se encuentra la pizza, aca estan los metodos para crear las pizzas y para agregar o quitar ingredientes. 
+
 public class Pizza {
 
     private Scanner in = new Scanner(System.in);
     private String nombrePizza;
     private double costo;
-    // ingredientes arraylist
-    protected List<Ingrediente> ingredientes = new ArrayList<>();
+    private Tamanio tamanio;
+    private TipoMasa tipoMasa;
+    private List<Ingrediente> ingredientes = new ArrayList<>();
 
     public Pizza(String nombrePizza) {
 
         this.nombrePizza = nombrePizza;
 
-        this.costo = 0;
+        this.costo = 10;
 
+    }
+
+    public void calcularCosto() {
+        for (Ingrediente ingrediente : ingredientes) {
+            this.costo += ingrediente.getPrecio();
+
+        }
+
+    }
+
+    public void detallePizza() {
+        separador();
+
+        System.out.println("NOMBRE INGREDIENTE: ");
+        System.out.println("PRECIO INGREDIENTE: ");
+
+        for (Ingrediente ingrediente : ingredientes) {
+            separador();
+            System.out.println("- " + ingrediente.getNombre());
+            System.out.println("- " + ingrediente.getPrecio());
+
+        }
+        separador();
+
+        System.out.println("TIPO MASA: " + this.tipoMasa);
+        System.out.println("TIPO DE PIZZA: " + this.tamanio);
+        separador();
+
+    }
+
+    public String nombrePizza() {
+        String nombrePizza = in.nextLine();
+
+        return nombrePizza;
     }
 
     public Pizza(int seleccion) {
         switch (seleccion) {
             case 1:
                 // Pizza Campestre
-                this.nombrePizza = "Pizza campestre";
-                Pizza PizzaC = new Pizza(nombrePizza);
-                seleccionarTamanio(PizzaC);
-                PizzaC.ingredientes.add(new Ingrediente("salsa tomate"));
-                PizzaC.ingredientes.add(new Ingrediente("queso"));
-                PizzaC.ingredientes.add(new Ingrediente("jamon"));
-                PizzaC.ingredientes.add(new Ingrediente("tocino"));
-                PizzaC.ingredientes.add(new Ingrediente("choclo"));
-                PizzaC.ingredientes.add(new Ingrediente("pimenton"));
-                this.costo = 3500 + PizzaC.ingredientes.get(0).getPrecio();
+                this.nombrePizza = "Pizza Campestre";
+                menuSeleccionTamanio();
+                menuSeleccionTipoMasa();
+                ingredientes.add(new Ingrediente("salsa tomate", 500));
+                ingredientes.add(new Ingrediente("queso", 500));
+                ingredientes.add(new Ingrediente("jamon", 700));
+                ingredientes.add(new Ingrediente("tocino", 800));
+                ingredientes.add(new Ingrediente("choclo", 500));
+                ingredientes.add(new Ingrediente("pimenton", 500));
+                this.costo += 3500;
+                calcularCosto();
+                detallePizza();
 
                 break;
 
             case 2:
                 // Pizza Napolitana
                 this.nombrePizza = "Pizza napolitana";
-                Pizza PizzaN = new Pizza(nombrePizza);
-                seleccionarTamanio(PizzaN);
-                PizzaN.ingredientes.add(new Ingrediente("salsa tomate"));
-                PizzaN.ingredientes.add(new Ingrediente("tomate"));
-                PizzaN.ingredientes.add(new Ingrediente("queso"));
-                PizzaN.ingredientes.add(new Ingrediente("jamon"));
-                PizzaN.ingredientes.add(new Ingrediente("aceituna"));
-                PizzaN.ingredientes.add(new Ingrediente("oregano"));
-                this.costo = 2700 + PizzaN.ingredientes.get(0).getPrecio();
-
+                menuSeleccionTamanio();
+                menuSeleccionTipoMasa();
+                ingredientes.add(new Ingrediente("salsa tomate", 500));
+                ingredientes.add(new Ingrediente(" tomate", 500));
+                ingredientes.add(new Ingrediente("queso", 500));
+                ingredientes.add(new Ingrediente("jamon", 700));
+                ingredientes.add(new Ingrediente("aceituna", 500));
+                ingredientes.add(new Ingrediente("oregano", 200));
+                this.costo += 2700;
+                calcularCosto();
+                detallePizza();
                 break;
             case 3:
                 // Pizza Pepperoni
                 this.nombrePizza = "Pizza pepperoni";
-                Pizza PizzaP = new Pizza(nombrePizza);
-                seleccionarTamanio(PizzaP);
-                PizzaP.ingredientes.add(new Ingrediente("salsa tomate"));
-                PizzaP.ingredientes.add(new Ingrediente("queso"));
-                PizzaP.ingredientes.add(new Ingrediente("pepperoni"));
-                this.costo = 1700 + PizzaP.ingredientes.get(0).getPrecio();
-
+                menuSeleccionTamanio();
+                menuSeleccionTipoMasa();
+                ingredientes.add(new Ingrediente("salsa tomate", 500));
+                ingredientes.add(new Ingrediente("queso", 500));
+                ingredientes.add(new Ingrediente("pepperoni", 700));
+                this.costo += 1700;
+                calcularCosto();
+                detallePizza();
                 break;
             case 4:
                 // Pizza Personalizada
-
                 System.out.println("Inserte nombre de la pizza");
-                this.nombrePizza = in.next();
-                Pizza pizzaPersonalizada = new Pizza(nombrePizza);
-                seleccionarTamanio(pizzaPersonalizada);
-                seleccionarSalsa(pizzaPersonalizada);
-                agregarIngrediente(pizzaPersonalizada);
-                this.ingredientes = pizzaPersonalizada.getIngredientes();
-                for (int i = 0; i < ingredientes.size(); i++) {
-                    this.costo = costo + ingredientes.get(i).getPrecio();
-                }
-
-                /*System.out.println(nombrePizza);
-                System.out.println(costo);
-                for (int i = 0; i < ingredientes.size(); i++) {
-                System.out.println(ingredientes.get(i).getPrecio());
-                }*/
+                this.nombrePizza = nombrePizza();
+                menuSeleccionTamanio();
+                menuSeleccionTipoMasa();
+                menuSeleccionSalsa();
+                menuAgregarIngrediente();
+                calcularCosto();
+                detallePizza();
                 break;
             case 5:
 
@@ -92,80 +122,97 @@ public class Pizza {
         }
     }
 
-    protected void seleccionarTamanio(Pizza pizza) {
+    public void menuSeleccionTipoMasa() {
 
         separador();
         System.out.println("Seleccione tipo de masa:");
         System.out.println("1.- Blanca");
         System.out.println("2.- Integral");
         System.out.println("3.- Vegana");
-        int masa = in.nextInt();
-        TipoMasa tipoMasa = null;
-        switch (masa) {
+        int seleccionMasa = in.nextInt();
+        seleccionTipoMasa(seleccionMasa);
+    }
+
+    public void seleccionTipoMasa(int seleccionMasa) {
+
+        switch (seleccionMasa) {
             case 1:
-                tipoMasa = TipoMasa.BLANCA;
+                this.tipoMasa = TipoMasa.BLANCA;
                 break;
             case 2:
-                tipoMasa = TipoMasa.INTEGRAL;
+                this.tipoMasa = TipoMasa.INTEGRAL;
                 break;
             case 3:
-                tipoMasa = TipoMasa.VEGANA;
+                this.tipoMasa = TipoMasa.VEGANA;
                 break;
         }
+
+    }
+
+    public void menuSeleccionTamanio() {
         separador();
         System.out.println("Seleccione tamaño de la pizza:");
         System.out.println("1.- Pequeña_____________+$3000");
         System.out.println("2.- Mediana_____________+$5000");
         System.out.println("3.- Familiar____________+$7000");
         System.out.println("4.- XL__________________+$10000");
-        int seleccion = in.nextInt();
-        Tamanio tamanio = null;
-        double precio = 0;
-        switch (seleccion) {
+        int seleccionTamanio = in.nextInt();
+        seleccionTamanio(seleccionTamanio);
+    }
+
+    public void seleccionTamanio(int seleccionTamanio) {
+
+        switch (seleccionTamanio) {
             case 1:
-                tamanio = Tamanio.INDIVIDUAL;
-                precio = 3000;
+                this.tamanio = Tamanio.INDIVIDUAL;
+                this.costo += 3000;
                 break;
             case 2:
-                tamanio = Tamanio.MEDIANA;
-                precio = 5000;
+                this.tamanio = Tamanio.MEDIANA;
+                this.costo += 5000;
                 break;
             case 3:
-                tamanio = Tamanio.FAMILIAR;
-                precio = 7000;
+                this.tamanio = Tamanio.FAMILIAR;
+                this.costo += 7000;
                 break;
             case 4:
-                tamanio = Tamanio.XL;
-                precio = 10000;
+                this.tamanio = Tamanio.XL;
+                this.costo += 10000;
                 break;
             default:
                 break;
         }
     }
 
-    public  void seleccionarSalsa(Pizza pizza) {
+    public void menuSeleccionSalsa() {
 
         System.out.println("Seleccione su salsa:");
         System.out.println("1.- Salsa de tomate_____+$500");
         System.out.println("2.- Salsa pesto_________+$800");
         System.out.println("3.- Salsa blanca________+$700");
         int seleccion = in.nextInt();
-        switch (seleccion) {
+        seleccionarSalsa(seleccion);
+    }
+
+    public void seleccionarSalsa(int seleccionSalsa) {
+
+        switch (seleccionSalsa) {
             case 1:
-                pizza.ingredientes.add(new Ingrediente("salsa tomate", 500));
+                this.ingredientes.add(new Ingrediente("salsa tomate", 500));
                 break;
             case 2:
-                pizza.ingredientes.add(new Ingrediente("salsa pesto", 800));
+                this.ingredientes.add(new Ingrediente("salsa pesto", 800));
                 break;
             case 3:
-                pizza.ingredientes.add(new Ingrediente("salsa blanca", 700));
+                this.ingredientes.add(new Ingrediente("salsa blanca", 700));
                 break;
             default:
                 break;
         }
+
     }
 
-    private void agregarIngrediente(Pizza pizza) {
+    public void menuAgregarIngrediente() {
         boolean terminar = true;
 
         do {
@@ -190,59 +237,67 @@ public class Pizza {
             System.out.println("14.- Atrás");
             separador();
 
-            int seleccion = in.nextInt();
-            switch (seleccion) {
-                case 1:
-                    pizza.ingredientes.add(new Ingrediente("tomate", 500));
-                    break;
-                case 2:
-                    pizza.ingredientes.add(new Ingrediente("queso", 500));
-                    break;
+            int seleccionIngrediente = in.nextInt();
 
-                case 3:
-                    pizza.ingredientes.add(new Ingrediente("jamon", 700));
-                    break;
+            if (!(seleccionIngrediente == 14)) {
+                agregarIngrediente(seleccionIngrediente);
 
-                case 4:
-                    pizza.ingredientes.add(new Ingrediente("pollo", 700));
-                    break;
-                case 5:
-                    pizza.ingredientes.add(new Ingrediente("tocino", 800));
-                    break;
-                case 6:
-                    pizza.ingredientes.add(new Ingrediente("pepperoni", 700));
-                    break;
-                case 7:
-                    pizza.ingredientes.add(new Ingrediente("choclo", 500));
-                    break;
-                case 8:
-                    pizza.ingredientes.add(new Ingrediente("aceituna", 500));
-                    break;
-                case 9:
-                    pizza.ingredientes.add(new Ingrediente("pimenton", 500));
-                    break;
-                case 10:
-                    pizza.ingredientes.add(new Ingrediente("champiñon", 500));
-                    break;
-                case 11:
-                    pizza.ingredientes.add(new Ingrediente("oregano", 200));
-                    break;
-                case 12:
-                    pizza.ingredientes.add(new Ingrediente("albahaca", 200));
-                    break;
-                case 13:
-                    pizza.ingredientes.add(new Ingrediente("aji", 300));
-                    break;
-                case 14:
-                    terminar = false;
-                    break;
-                default:
-                    terminar = false;
-                    break;
+            } else {
+                terminar = false;
             }
-
         } while (terminar);
 
+    }
+
+    public void agregarIngrediente(int seleccionIngrediente) {
+
+        switch (seleccionIngrediente) {
+            case 1:
+                this.ingredientes.add(new Ingrediente("tomate", 500));
+                break;
+            case 2:
+                this.ingredientes.add(new Ingrediente("queso", 500));
+                break;
+
+            case 3:
+                this.ingredientes.add(new Ingrediente("jamon", 700));
+                break;
+
+            case 4:
+                this.ingredientes.add(new Ingrediente("pollo", 700));
+                break;
+            case 5:
+                this.ingredientes.add(new Ingrediente("tocino", 800));
+                break;
+            case 6:
+                this.ingredientes.add(new Ingrediente("pepperoni", 700));
+                break;
+            case 7:
+                this.ingredientes.add(new Ingrediente("choclo", 500));
+                break;
+            case 8:
+                this.ingredientes.add(new Ingrediente("aceituna", 500));
+                break;
+            case 9:
+                this.ingredientes.add(new Ingrediente("pimenton", 500));
+                break;
+            case 10:
+                this.ingredientes.add(new Ingrediente("champiñon", 500));
+                break;
+            case 11:
+                this.ingredientes.add(new Ingrediente("oregano", 200));
+                break;
+            case 12:
+                this.ingredientes.add(new Ingrediente("albahaca", 200));
+                break;
+            case 13:
+                this.ingredientes.add(new Ingrediente("aji", 300));
+                break;
+            case 14:
+                break;
+            default:
+                break;
+        }
     }
 
     public List<Ingrediente> getIngredientes() {
@@ -265,8 +320,26 @@ public class Pizza {
         this.costo = costo;
     }
 
+    
+    public Tamanio getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(Tamanio tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public TipoMasa getTipoMasa() {
+        return tipoMasa;
+    }
+
+    public void setTipoMasa(TipoMasa tipoMasa) {
+        this.tipoMasa = tipoMasa;
+    }
+
     public void separador() {
         System.out.println("---------------");
 
     }
+
 }

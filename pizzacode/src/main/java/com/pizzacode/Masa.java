@@ -16,9 +16,14 @@ public class Masa extends Ingrediente {
         super(precio);
         this.tipo = tipo;
         this.tamanio = tamanio;
-        
+
     }
-    
+
+    public Masa(double precio, Tamanio tamanio2) {
+    }
+
+    public Masa(TipoMasa tipoMasa) {
+    }
 
     public TipoMasa getTipo() {
         return tipo;
