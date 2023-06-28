@@ -10,44 +10,6 @@ public class Carrito {
     private Scanner in = new Scanner(System.in);
     private List<Orden> ordenes = new ArrayList<>();
 
-    public boolean pagar() {
-        if (ordenes.isEmpty()) {
-
-            separador();
-            System.out.println("NO HAY BOLETAS DISPONIBLES");
-
-        } else {
-
-            mostrarUsuarios();
-
-            separador();
-            System.out.println("SELECCIONE USUARIO");
-            separador();
-            int seleccion = in.nextInt();
-            // int seleccionUsr = seleccion - 1;
-            if (!(ordenes.get(seleccion - 1).getUsuario().getBoletas().isEmpty())) {
-
-                System.out.println("DETALLE BOLETAS: ");
-
-                ordenes.get(seleccion - 1).getUsuario().mostrarBoletas();
-
-                for (int i = 0; i < ordenes.get(seleccion - 1).getUsuario().getBoletas().size(); i++) {
-                    ordenes.get(seleccion - 1).getUsuario().getBoletas().get(i).mostrarPizzas();
-                }
-                separador();
-                System.out.println("SELECCIONAR BOLETA PARA PAGAR");
-                separador();
-                int seleccionBoleta = in.nextInt();
-                ordenes.get(seleccion - 1).getUsuario().pagarBoleta(seleccionBoleta);
-
-            } else {
-
-                System.out.println("USUARIO SIN BOLETAS DISPONIBLES");
-            }
-        }
-        return true;
-    }
-
     public void menu() {
         boolean terminar = true;
 
@@ -61,8 +23,6 @@ public class Carrito {
             separador();
             int seleccion = in.nextInt();
 
-            // validar entrada
-
             switch (seleccion) {
                 case 1:
                     generarOrden();
@@ -74,8 +34,7 @@ public class Carrito {
                     mostrarUsuarios();
                     break;
                 case 4:
-                    Usuario usuario = new Usuario();
-                    registarUsuario(usuario);
+                    registarUsuario();
                     break;
                 case 5:
                     terminar = false;
@@ -91,8 +50,8 @@ public class Carrito {
         if (!ordenes.isEmpty()) {
             mostrarUsuarios();
             separador();
-            int index = in.nextInt();
-            ordenar(index);
+            int indexUsr = in.nextInt();
+            ordenar(indexUsr);
 
         } else {
             separador();
@@ -102,10 +61,52 @@ public class Carrito {
     }
 
     public void ordenar(int index) {
-        // int lastUser = index - 1;
-        // Usuario user = ordenes.get(lastUser).getUsuario();
-        // ordenes.get(lastUser).seleccionPizza(user);
-        ordenes.get(index - 1).seleccionPizza(ordenes.get(index - 1).getUsuario());
+        int lastUser = index - 1;
+        Usuario user = ordenes.get(lastUser).getUsuario();
+        ordenes.get(lastUser).seleccionPizza(user);
+    }
+
+    public boolean pagar() {
+        if (ordenes.isEmpty()) {
+
+            separador();
+            System.out.println("NO HAY BOLETAS DISPONIBLES");
+
+        } else {
+
+            mostrarUsuarios();
+
+            separador();
+            System.out.println("SELECCIONE USUARIO");
+            separador();
+
+            int seleccion = in.nextInt();
+            int seleccionUsr = seleccion - 1;
+            boolean hasBoleta = ordenes.get(seleccionUsr).getUsuario().getBoletas().isEmpty();
+
+            if (!(hasBoleta)) {
+
+                System.out.println("DETALLE BOLETAS: ");
+
+                ordenes.get(seleccionUsr).getUsuario().mostrarBoletas();
+
+                int cantBoletas = ordenes.get(seleccionUsr).getUsuario().getBoletas().size();
+
+                for (int i = 0; i < cantBoletas; i++) {
+                    ordenes.get(seleccionUsr).getUsuario().getBoletas().get(i).mostrarPizzas();
+                }
+                separador();
+                System.out.println("SELECCIONAR BOLETA PARA PAGAR");
+                separador();
+                int seleccionBoleta = in.nextInt();
+                ordenes.get(seleccionUsr).getUsuario().pagarBoleta(seleccionBoleta);
+
+            } else {
+
+                System.out.println("USUARIO SIN BOLETAS DISPONIBLES");
+            }
+        }
+        return true;
     }
 
     public void mostrarUsuarios() {
@@ -127,10 +128,22 @@ public class Carrito {
 
     }
 
-    public void registarUsuario(Usuario usuario) {
+    public void registarUsuario() {
 
-        // Orden orden = new Orden(usuario);
-        ordenes.add(new Orden(usuario));
+        Usuario usuario = new Usuario();
+        registrarOrden(usuario);
+    }
+
+    public void registarUsuario(String nombre) {
+
+        Usuario usuario = new Usuario(nombre);
+        registrarOrden(usuario);
+    }
+
+    public void registrarOrden(Usuario usuario) {
+        Orden orden = new Orden(usuario);
+        ordenes.add(orden);
+
     }
 
     public void separador() {

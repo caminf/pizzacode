@@ -3,7 +3,6 @@ package com.pizzacode;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -21,7 +20,7 @@ public class PizzaTest {
     @BeforeEach
     public void setUp() {
         ingredientesTest = new ArrayList<>();
-        pizzaPrueba = new Pizza("Personalizada");
+        pizzaPrueba = new Pizza("Personalizada", 10);
     }
 
     @ParameterizedTest
@@ -30,6 +29,7 @@ public class PizzaTest {
         pizzaPrueba.seleccionTamanio(seleccionTamanio);
         Assertions.assertNotNull(pizzaPrueba.getTamanio());
     }
+
     @ParameterizedTest
     @ValueSource(ints = { 1, 2, 3 })
     public void checkSeleccionarSalsa(int seleccionSalsa) {
@@ -40,15 +40,16 @@ public class PizzaTest {
     @ParameterizedTest
     @ValueSource(ints = { 1 })
     public void checkCalcularCosto(int seleccionIngrediente) {
-         /*
+        /*
          * 1.- Tomate______________+$500");
-       
+         * 
          */
-         pizzaPrueba.agregarIngrediente(seleccionIngrediente);
-         pizzaPrueba.calcularCosto();
-         costoObtenido = pizzaPrueba.getCosto();
-         costoEsperado = 500;
-         Assertions.assertEquals(costoEsperado, costoObtenido);
+        pizzaPrueba.agregarIngrediente(seleccionIngrediente);
+        pizzaPrueba.calcularCosto();
+        costoObtenido = pizzaPrueba.getCosto();
+        // 10 sumados como costo base para testing
+        costoEsperado = 500 + 10;
+        Assertions.assertEquals(costoEsperado, costoObtenido);
     }
 
 }

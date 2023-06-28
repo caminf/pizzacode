@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BoletaTest {
-    // Boleta Test, la boleta es aquella que contiene el precio de las pizzas.
-    // la infomracion de las pizzas, y el calculo del costo de las pizzas
-    // y la informacion del usuario
+    
     public static Boleta boleta;
     public static Usuario usuario;
     public static List<Pizza> pizzas;
     public static double total;
     public static double totalExp;
 
-    @BeforeAll
-    public static void setUp() {
+    @BeforeEach
+    public void setUp() {
         usuario = new Usuario("Juan");
         boleta = new Boleta(usuario);
         pizzas = new ArrayList<>();
@@ -66,7 +64,7 @@ public class BoletaTest {
     public void displayPizzas() {
         Pizza pizzaTest = new Pizza("Pizza Test", 10);
         boleta.agregarPizza(pizzaTest);
-        
+
         boleta.mostrarPizzas();
 
         Assertions.assertNotNull(boleta.getPizzas().isEmpty());

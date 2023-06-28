@@ -31,10 +31,15 @@ public class Orden {
     }
 
     public void guardarBoleta(int seleccion, Usuario usuario) {
+        Boleta boleta;
+        int lastUser;
         switch (seleccion) {
             case 1:
-                this.usuario.agregarBoleta(new Boleta(usuario));
-                int lastUser = this.usuario.getBoletas().size() - 1;
+                // Pizza Campestre
+                boleta = new Boleta(usuario);
+                this.usuario.agregarBoleta(boleta);
+
+                lastUser = this.usuario.getBoletas().size() - 1;
 
                 this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
@@ -42,20 +47,32 @@ public class Orden {
 
             case 2:
                 // Pizza Napolitana
-                this.usuario.agregarBoleta(new Boleta(usuario));
-                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(2));
+                boleta = new Boleta(usuario);
+                this.usuario.agregarBoleta(boleta);
+
+                lastUser = this.usuario.getBoletas().size() - 1;
+
+                this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
                 break;
             case 3:
                 // Pizza Pepperoni
-                this.usuario.agregarBoleta(new Boleta(usuario));
-                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(3));
+                boleta = new Boleta(usuario);
+                this.usuario.agregarBoleta(boleta);
+
+                lastUser = this.usuario.getBoletas().size() - 1;
+
+                this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
                 break;
             case 4:
                 // Pizza Personalizada
-                this.usuario.agregarBoleta(new Boleta(usuario));
-                this.usuario.getBoletas().get(this.usuario.getBoletas().size() - 1).setPizzas(new Pizza(4));
+                boleta = new Boleta(usuario);
+                this.usuario.agregarBoleta(boleta);
+
+                lastUser = this.usuario.getBoletas().size() - 1;
+
+                this.usuario.getBoletas().get(lastUser).agregarPizza(seleccion);
 
                 break;
             case 5:
@@ -66,8 +83,6 @@ public class Orden {
         }
 
     }
-    
-    
 
     public Usuario getUsuario() {
 

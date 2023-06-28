@@ -2,29 +2,28 @@ package com.pizzacode;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarritoTest {
     public static Carrito carrito;
-    public static Usuario usuario;
 
     @BeforeAll
     public static void setUp() {
         carrito = new Carrito();
-        usuario = new Usuario("juan");
 
     }
 
-    @Test
-    public void checkUsrRegistro() {
+    @ParameterizedTest
+    @ValueSource(strings = { "Carlos" })
+    public void checkUsrRegistro(String nombre) {
 
-        carrito.registarUsuario(usuario);
+        carrito.registarUsuario(nombre);
 
-        for (int i = 0; i < carrito.getOrdenes().size(); i++) {
-            System.out.println(carrito.getOrdenes().get(i).getUsuario().getNombre());
-        }
+        String nombreExp = "Carlos";
+        String nombreObtenido = carrito.getOrdenes().get(0).getUsuario().getNombre();
 
-        Assertions.assertNotNull(carrito.getOrdenes());
+        Assertions.assertEquals(nombreExp, nombreObtenido);
     }
 
 }

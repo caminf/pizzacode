@@ -16,13 +16,12 @@ public class Boleta {
     }
 
     public String nombreBoleta() {
-        String nombreBoleta = this.usuario.getNombre();
-        return nombreBoleta;
+        return this.usuario.getNombre();
     }
 
     public void agregarPizza(int seleccion) {
-        // Pizza pizza = new Pizza(seleccion);
-        pizzas.add(new Pizza(seleccion));
+        Pizza pizza = new Pizza(seleccion);
+        pizzas.add(pizza);
     }
 
     public void agregarPizza(Pizza pizza) {
@@ -30,17 +29,17 @@ public class Boleta {
     }
 
     public double calcularTotal() {
-        for (int i = 0; i < pizzas.size(); i++) {
-            total = total + pizzas.get(i).getCosto();
+
+        for (Pizza pizza : pizzas) {
+            total += pizza.getCosto();
         }
         return total;
     }
 
     public void mostrarPizzas() {
-        for (int i = 0; i < pizzas.size(); i++) {
-            System.out.println("Nombre Pizza: " + pizzas.get(i).getNombrePizza());
-            System.out.println("Costo Pizza: " + pizzas.get(i).getCosto());
-
+        for (Pizza pizza : pizzas) {
+            System.out.println("Nombre Pizza: " + pizza.getNombrePizza());
+            System.out.println("Costo Pizza: " + pizza.getCosto());
         }
 
     }
