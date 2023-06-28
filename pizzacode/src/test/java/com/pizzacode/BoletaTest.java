@@ -27,7 +27,7 @@ public class BoletaTest {
 
     @Test
     public void checkAddPizzas() {
-        Pizza PizzaTest = new Pizza("Pizza Test");
+        Pizza PizzaTest = new Pizza("Pizza Test", 10);
 
         boleta.agregarPizza(PizzaTest);
 
@@ -36,9 +36,9 @@ public class BoletaTest {
 
     @Test
     public void checkTotal() {
-        Pizza pizzaExp = new Pizza("Pizza expexted");
+        Pizza pizzaExp = new Pizza("Pizza expexted", 10);
 
-        Pizza pizzaTest = new Pizza("Pizza given");
+        Pizza pizzaTest = new Pizza("Pizza given", 10);
 
         boleta.agregarPizza(pizzaTest);
 
@@ -64,9 +64,12 @@ public class BoletaTest {
 
     @Test
     public void displayPizzas() {
-
+        Pizza pizzaTest = new Pizza("Pizza Test", 10);
+        boleta.agregarPizza(pizzaTest);
+        
         boleta.mostrarPizzas();
-        Assertions.assertNotNull(boleta.getPizzas());
+
+        Assertions.assertNotNull(boleta.getPizzas().isEmpty());
     }
 
 }

@@ -14,11 +14,11 @@ public class Pizza {
     private TipoMasa tipoMasa;
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
-    public Pizza(String nombrePizza) {
+    public Pizza(String nombrePizza, double costo) {
 
         this.nombrePizza = nombrePizza;
-        
-        this.costo = 10;
+
+        this.costo = costo;
 
     }
 
@@ -320,7 +320,6 @@ public class Pizza {
         this.costo = costo;
     }
 
-    
     public Tamanio getTamanio() {
         return tamanio;
     }
