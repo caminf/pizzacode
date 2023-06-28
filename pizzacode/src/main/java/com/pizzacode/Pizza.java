@@ -25,9 +25,7 @@ public class Pizza {
     public void calcularCosto() {
         for (Ingrediente ingrediente : ingredientes) {
             this.costo += ingrediente.getPrecio();
-
         }
-
     }
 
     public void detallePizza() {
@@ -47,13 +45,11 @@ public class Pizza {
         System.out.println("TIPO MASA: " + this.tipoMasa);
         System.out.println("TIPO DE PIZZA: " + this.tamanio);
         separador();
-
     }
 
-    public String nombrePizza() {
-        String nombrePizza = in.nextLine();
-
-        return nombrePizza;
+    public String nombrePizzaPersonalizada() {
+        String nombrePizzaPer = in.nextLine();
+        return nombrePizzaPer;
     }
 
     public Pizza(int seleccion) {
@@ -105,7 +101,7 @@ public class Pizza {
             case 4:
                 // Pizza Personalizada
                 System.out.println("Inserte nombre de la pizza");
-                this.nombrePizza = nombrePizza();
+                this.nombrePizza = nombrePizzaPersonalizada();
                 menuSeleccionTamanio();
                 menuSeleccionTipoMasa();
                 menuSeleccionSalsa();
@@ -114,16 +110,12 @@ public class Pizza {
                 detallePizza();
                 break;
             case 5:
-
                 break;
-
             default:
-
         }
     }
 
     public void menuSeleccionTipoMasa() {
-
         separador();
         System.out.println("Seleccione tipo de masa:");
         System.out.println("1.- Blanca");
@@ -134,7 +126,6 @@ public class Pizza {
     }
 
     public void seleccionTipoMasa(int seleccionMasa) {
-
         switch (seleccionMasa) {
             case 1:
                 this.tipoMasa = TipoMasa.BLANCA;
@@ -145,8 +136,9 @@ public class Pizza {
             case 3:
                 this.tipoMasa = TipoMasa.VEGANA;
                 break;
+            default:
+                break;
         }
-
     }
 
     public void menuSeleccionTamanio() {
@@ -161,7 +153,6 @@ public class Pizza {
     }
 
     public void seleccionTamanio(int seleccionTamanio) {
-
         switch (seleccionTamanio) {
             case 1:
                 this.tamanio = Tamanio.INDIVIDUAL;
@@ -185,7 +176,6 @@ public class Pizza {
     }
 
     public void menuSeleccionSalsa() {
-
         System.out.println("Seleccione su salsa:");
         System.out.println("1.- Salsa de tomate_____+$500");
         System.out.println("2.- Salsa pesto_________+$800");
@@ -195,7 +185,6 @@ public class Pizza {
     }
 
     public void seleccionarSalsa(int seleccionSalsa) {
-
         switch (seleccionSalsa) {
             case 1:
                 this.ingredientes.add(new Ingrediente("salsa tomate", 500));
@@ -209,12 +198,10 @@ public class Pizza {
             default:
                 break;
         }
-
     }
 
     public void menuAgregarIngrediente() {
         boolean terminar = true;
-
         do {
             separador();
             System.out.println("¿Qué ingredientes desea agregar? ");
@@ -238,15 +225,12 @@ public class Pizza {
             separador();
 
             int seleccionIngrediente = in.nextInt();
-
             if (!(seleccionIngrediente == 14)) {
                 agregarIngrediente(seleccionIngrediente);
-
             } else {
                 terminar = false;
             }
         } while (terminar);
-
     }
 
     public void agregarIngrediente(int seleccionIngrediente) {
