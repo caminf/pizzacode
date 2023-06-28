@@ -10,7 +10,7 @@ public class App {
         // Carrito
         Carrito carrito1 = new Carrito();
         System.out.println("BIENVENIDO A LA PIZZERIA");
-            carrito1.menu();
+        carrito1.menu();
     }
 
 }
